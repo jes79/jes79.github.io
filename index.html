@@ -3,360 +3,439 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dylan Jeong · donghaewave</title>
-<meta name="description" content="Dylan Jeong (jes79) — AI 바이브 코딩 강사 · 게임 개발자. Unity · Unreal · AI 3D.">
-<meta property="og:title" content="Dylan Jeong · donghaewave 🌊">
-<meta property="og:description" content="AI와 함께 게임을 만드는 바이브 코딩 강사">
+<title>ESTEAM · East Sea Team</title>
+<meta name="description" content="ESTEAM(East Sea Team) — Dylan Jeong(jes79)의 게임 · 테크 아트 · AI 바이브 코딩 작업물 스토어. 전부 무료.">
+<meta property="og:title" content="ESTEAM · East Sea Team">
+<meta property="og:description" content="동해에서 만든 작업물, 전부 무료 🌊">
 <meta property="og:image" content="https://github.com/jes79.png">
-<meta name="theme-color" content="#0a1730">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<meta name="theme-color" content="#171a21">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23171a21' stroke='%2366c0f4' stroke-width='8'/><path d='M18 58c10-12 20-12 30 0s20 12 34 0' fill='none' stroke='%2366c0f4' stroke-width='9' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Manrope:wght@500;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --night:#060d1f; --deep:#0a1730; --sea:#11305c; --wave:#29b6f6; --foam:#7fe3ff;
-  --sun:#ffb347; --dusk:#ff7a59; --rose:#ff5e8a;
-  --text:#eaf3ff; --muted:#9fb3cf; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.1);
-  --radius:20px;
+  --top:#171a21; --bg:#1b2838; --bg2:#16202d; --panel:#0e1621; --blue:#66c0f4; --blue2:#1a9fff;
+  --text:#c7d5e0; --white:#fff; --muted:#8f98a0; --dim:#556772;
+  --green:#a4d007; --green-bg:#4c6b22; --btn:#5c7e10; --btn2:#75b022;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--night);color:var(--text);font-family:"Noto Sans KR",system-ui,sans-serif;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font:14px/1.6 "Noto Sans KR",Arial,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(1200px 500px at 50% -120px,rgba(102,192,244,.22),transparent 70%),linear-gradient(180deg,#1b2838 0,#1b2838 60%,#16202d)}
 a{color:inherit;text-decoration:none}
-.en{font-family:"Space Grotesk","Noto Sans KR",sans-serif}
-.mono{font-family:"JetBrains Mono",Consolas,monospace}
-.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+button{font:inherit;cursor:pointer;border:0}
+.en{font-family:Manrope,"Noto Sans KR",sans-serif}
+.mono{font-family:"DM Mono",monospace}
+.w{width:min(1060px,100% - 32px);margin-inline:auto}
 
-/* nav */
-nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,backdrop-filter .3s}
-nav.scrolled{background:rgba(6,13,31,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700}
-.logo img{width:32px;height:32px;border-radius:50%;border:2px solid var(--wave)}
-.links{display:flex;gap:26px;font-size:.92rem;color:var(--muted)}
-.links a:hover{color:var(--foam)}
-@media (max-width:720px){.links{display:none}}
+/* top bar */
+.top{background:var(--top);position:sticky;top:0;z-index:40}
+.top .w{display:flex;align-items:center;gap:40px;height:72px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand svg{width:40px;height:40px}
+.brand b{display:block;font:800 22px/1 Manrope,sans-serif;letter-spacing:3px;color:var(--white)}
+.brand small{display:block;font:500 9px/1 "DM Mono",monospace;letter-spacing:2.4px;color:var(--muted);margin-top:4px}
+.mainnav{display:flex;gap:28px;font:700 15px Manrope,"Noto Sans KR",sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.mainnav a{color:#dcdedf;padding:24px 0;border-bottom:3px solid transparent}
+.mainnav a.on{color:var(--blue);border-color:var(--blue)}
+.mainnav a:hover{color:#fff}
+.acct{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px}
+.install{display:flex;align-items:center;gap:6px;background:#5c7e10;background:linear-gradient(90deg,#06bfff,#2d73ff);color:#fff;padding:6px 12px;border-radius:2px;font-weight:700}
+.me{display:flex;align-items:center;gap:8px;padding:3px 10px 3px 3px;background:rgba(255,255,255,.06);border-radius:2px}
+.me img{width:30px;height:30px;border:2px solid #57cbde;border-radius:2px}
+.me span b{display:block;color:#57cbde;font-size:12px;line-height:1.2}
+.me span i{font-style:normal;color:var(--muted);font-size:11px}
+@media (max-width:860px){.mainnav{display:none}.install{display:none}}
 
-/* hero */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
-  background:linear-gradient(180deg,#071230 0%,#1a2a6b 38%,#7a3c7c 58%,#ff7a59 72%,#ffb347 80%,#0a1730 80.2%)}
-.stars{position:absolute;inset:0 0 40% 0;background-image:radial-gradient(1px 1px at 20% 30%,#fff9,transparent),radial-gradient(1px 1px at 70% 12%,#fff8,transparent),radial-gradient(1.5px 1.5px at 40% 20%,#fffa,transparent),radial-gradient(1px 1px at 85% 35%,#fff7,transparent),radial-gradient(1px 1px at 10% 8%,#fff8,transparent),radial-gradient(1px 1px at 55% 6%,#fff6,transparent),radial-gradient(1.2px 1.2px at 92% 18%,#fff9,transparent);animation:twinkle 6s ease-in-out infinite alternate}
-@keyframes twinkle{to{opacity:.4}}
-.sun{position:absolute;left:54%;top:80%;width:220px;height:220px;transform:translate(-50%,-50%);border-radius:50%;
-  background:radial-gradient(circle,#fff3c4 0%,#ffcf6b 35%,#ff8a4c 60%,transparent 70%);filter:blur(2px);animation:sunrise 3s ease-out both}
-.sun::after{content:"";position:absolute;inset:-140px;border-radius:50%;background:radial-gradient(circle,rgba(255,170,80,.45),transparent 65%)}
-@keyframes sunrise{from{transform:translate(-50%,-10%);opacity:0}}
-.city{position:absolute;right:4%;bottom:20%;width:min(440px,50vw);height:120px;opacity:.9}
-canvas#sea{position:absolute;left:0;right:0;bottom:0;width:100%;height:20.2%}
-.hero-inner{position:relative;z-index:2;padding:120px 0 26vh;display:grid;gap:22px;max-width:720px}
-.tag{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:6px 14px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);font-size:.85rem}
-.tag .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80}
-h1{font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.05;font-weight:900;letter-spacing:-.02em}
-h1 .grad{background:linear-gradient(90deg,var(--foam),#fff 45%,var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
-.typed{font-size:clamp(1.05rem,2.4vw,1.4rem);color:#fff;min-height:2.2em;text-shadow:0 2px 20px rgba(0,0,0,.4)}
-.typed .caret{display:inline-block;width:2px;height:1.1em;background:var(--foam);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:14px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s}
-.btn.primary{background:linear-gradient(135deg,var(--wave),#3b82f6);box-shadow:0 10px 30px -10px var(--wave)}
-.btn.ghost{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px)}
-.btn:hover{transform:translateY(-3px)}
-.scroll-hint{position:absolute;left:50%;bottom:24px;z-index:3;transform:translateX(-50%);font-size:.75rem;color:var(--foam);letter-spacing:.2em;animation:bob 2s ease-in-out infinite}
-@keyframes bob{50%{transform:translate(-50%,6px)}}
+/* store nav */
+.storenav{margin:22px auto 0;display:flex;align-items:center;gap:2px;height:40px;background:linear-gradient(90deg,rgba(62,103,150,.92) 11%,rgba(58,120,177,.8) 25%,rgb(15,33,110));box-shadow:0 0 3px rgba(0,0,0,.4);border-radius:2px;padding-right:6px}
+.storenav a{padding:0 14px;height:100%;display:flex;align-items:center;color:#e5e5e5;font-size:13px;white-space:nowrap}
+.storenav a:hover{background:linear-gradient(90deg,#d2e885,#b4d76b);color:#111}
+.storenav .search{margin-left:auto;display:flex;align-items:center;background:#316282;border-radius:3px;border:1px solid rgba(0,0,0,.3);box-shadow:inset 1px 1px 0 rgba(0,0,0,.2)}
+.storenav input{background:transparent;border:0;outline:0;color:#fff;padding:6px 10px;width:200px;font:inherit;font-size:13px}
+.storenav input::placeholder{color:#a3c4d8;font-style:italic}
+.storenav .search i{padding:0 10px;color:#a3c4d8;font-style:normal}
+@media (max-width:720px){.storenav a:not(.keep){display:none}.storenav input{width:140px}}
 
-/* sections */
-section{padding:110px 0;position:relative}
-.eyebrow{font-size:.8rem;letter-spacing:.25em;color:var(--wave);text-transform:uppercase;margin-bottom:10px}
-h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.25;font-weight:900;margin-bottom:18px}
-.lead{color:var(--muted);max-width:640px;font-size:1.05rem}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
-.reveal.in{opacity:1;transform:none}
+/* section heads */
+.sh{display:flex;justify-content:space-between;align-items:flex-end;margin:46px 0 10px}
+.sh h2{font:500 14px "Noto Sans KR",sans-serif;letter-spacing:.06em;color:#fff;text-transform:uppercase}
+.sh a{font-size:12px;color:#fff;border:1px solid rgba(255,255,255,.4);padding:2px 12px;border-radius:2px}
+.sh a:hover{background:rgba(255,255,255,.1)}
 
-/* about */
-.about{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-@media (max-width:860px){.about{grid-template-columns:1fr}}
-.code{background:#0b1426;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 30px 60px -30px #000}
-.code .bar{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
-.code .bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.code .bar i:nth-child(2){background:#febc2e}.code .bar i:nth-child(3){background:#28c840}
-.code pre{padding:20px 22px;font-size:.86rem;line-height:1.8;overflow-x:auto;color:#cfe3ff}
-.k{color:#ff7ab6}.t{color:#7fe3ff}.s{color:#ffcf6b}.f{color:#b69cff}.c{color:#5d7699}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-.stat{padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-align:center}
-.stat b{display:block;font-size:1.8rem;background:linear-gradient(90deg,var(--foam),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat span{font-size:.82rem;color:var(--muted)}
+/* art */
+.art{position:relative;overflow:hidden;display:grid;place-items:center;color:#fff;isolation:isolate}
+.art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));z-index:-1}
+.art .gl{font:900 clamp(40px,8vw,110px)/1 "Noto Sans KR",serif;opacity:.92;text-shadow:0 6px 30px rgba(0,0,0,.45)}
+.art .ttl{position:absolute;left:14px;right:14px;bottom:10px;font:800 15px/1.25 Manrope,"Noto Sans KR",sans-serif;text-shadow:0 2px 8px #000}
+.art.sm .gl{font-size:34px}
+.art.sm .ttl{display:none}
 
-/* workflow */
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px;counter-reset:step}
-@media (max-width:900px){.flow{grid-template-columns:1fr 1fr}}
-@media (max-width:520px){.flow{grid-template-columns:1fr}}
-.step{position:relative;padding:24px 20px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);transition:transform .3s,border-color .3s}
-.step:hover{transform:translateY(-6px);border-color:var(--wave)}
-.step::before{counter-increment:step;content:"0" counter(step);position:absolute;top:16px;right:18px;font:700 .8rem "JetBrains Mono",monospace;color:var(--wave);opacity:.7}
-.step .ico{font-size:1.8rem;margin-bottom:10px}
-.step h3{font-size:1.05rem;margin-bottom:6px}
-.step p{font-size:.88rem;color:var(--muted)}
+/* featured */
+.feat{position:relative}
+.cap{display:none;grid-template-columns:63% 37%;height:353px;box-shadow:0 0 7px #000;background:var(--panel)}
+.cap.on{display:grid;animation:fade .5s}
+@keyframes fade{from{opacity:0}}
+.cap .art{height:100%;cursor:pointer}
+.cap .art .gl{font-size:120px}
+.cap .info{padding:14px 14px 12px;display:flex;flex-direction:column;background:linear-gradient(180deg,#0f1922,#0b141c);cursor:pointer}
+.cap .info h3{font:400 24px/1.25 Manrope,"Noto Sans KR",sans-serif;color:#fff;margin-bottom:10px}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.shots div{height:70px;border-radius:1px;opacity:.75;transition:opacity .2s}
+.shots div:hover{opacity:1}
+.avail{font-size:20px;color:#fff;margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11px;background:rgba(255,255,255,.2);color:#fff;padding:1px 7px;border-radius:2px}
+.price{margin-top:auto;display:flex;align-items:center;justify-content:space-between}
+.price .os{color:var(--muted);font-size:12px}
+.pr{display:flex;align-items:center;height:30px}
+.pr .disc{background:var(--green-bg);color:#beee11;font:800 20px/30px Manrope;padding:0 8px}
+.pr .vals{background:#344654;padding:0 8px;font-size:11px;line-height:1.1;text-align:right;height:100%;display:flex;flex-direction:column;justify-content:center}
+.pr .vals s{color:#738895}
+.pr .vals b{color:#beee11;font-size:14px}
+.pr .free{background:#344654;color:#fff;padding:0 10px;line-height:30px;font-size:13px}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:100px;background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(0,0,0,.05));color:#fff;font-size:30px;z-index:5}
+.arrow.l{left:-56px}.arrow.r{right:-56px;background:linear-gradient(-90deg,rgba(0,0,0,.3),rgba(0,0,0,.05))}
+.arrow:hover{background:linear-gradient(90deg,rgba(171,218,244,.3),rgba(171,218,244,.05))}
+@media (max-width:1180px){.arrow.l{left:4px}.arrow.r{right:4px}.arrow{height:60px;width:32px}}
+.dots{display:flex;justify-content:center;gap:4px;margin-top:12px}
+.dots button{width:15px;height:9px;background:hsla(202,60%,100%,.2);border-radius:2px}
+.dots button.on{background:hsla(202,60%,100%,.4)}
+@media (max-width:760px){.cap{grid-template-columns:1fr;height:auto}.cap .art{height:220px}.shots{display:none}}
 
-/* projects */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 26px}
-.filters button{font:inherit;font-size:.88rem;padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
-.filters button.on,.filters button:hover{background:var(--wave);border-color:var(--wave);color:#04121f;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:26px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);overflow:hidden;transition:transform .3s,border-color .3s}
-.card::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(41,182,246,.16),transparent 45%);opacity:0;transition:opacity .3s}
-.card:hover{transform:translateY(-6px);border-color:rgba(127,227,255,.4)}
-.card:hover::before{opacity:1}
-.card .emoji{font-size:2rem}
-.card h3{font-size:1.15rem;line-height:1.35}
-.card p{font-size:.9rem;color:var(--muted);flex:1}
-.chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:.72rem;padding:3px 10px;border-radius:99px;background:rgba(127,227,255,.1);color:var(--foam);border:1px solid rgba(127,227,255,.2)}
-.card .go{font-size:.85rem;color:var(--sun);font-weight:700}
-.card.hide{display:none}
+/* offers */
+.offers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:860px){.offers{grid-template-columns:1fr 1fr}}
+.offer{background:linear-gradient(135deg,#2b4c6e,#1b2f45);box-shadow:0 0 6px rgba(0,0,0,.5);cursor:pointer;transition:transform .15s}
+.offer:hover{transform:translateY(-3px);filter:brightness(1.12)}
+.offer .art{height:150px}
+.offer .ob{padding:10px}
+.offer .ob .lbl{font-size:11px;text-transform:uppercase;color:#fff;letter-spacing:.04em;margin-bottom:2px}
+.offer .ob .sub{font-size:11px;color:var(--blue);margin-bottom:8px}
 
-/* stack */
-.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:40px}
-.group{padding:26px;border-radius:var(--radius);background:linear-gradient(160deg,rgba(41,182,246,.08),rgba(255,122,89,.05));border:1px solid var(--line)}
-.group h3{font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.group ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.group li{font-size:.85rem;padding:6px 12px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--line)}
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media (max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
+.catt{position:relative;height:120px;border-radius:3px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:12px;cursor:pointer;font:800 15px Manrope,"Noto Sans KR",sans-serif;color:#fff;text-shadow:0 2px 6px #000;transition:transform .15s}
+.catt:hover{transform:scale(1.03)}
+.catt span.e{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:36px}
 
-/* teaching */
-.teach{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-@media (max-width:860px){.teach{grid-template-columns:1fr}}
-.teach .item{padding:30px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line)}
-.teach .item .num{font:700 2.4rem "Space Grotesk",sans-serif;background:linear-gradient(180deg,var(--sun),var(--dusk));-webkit-background-clip:text;background-clip:text;color:transparent}
-.teach .item h3{margin:6px 0 8px}
-.teach .item p{color:var(--muted);font-size:.92rem}
+/* tabs list */
+.tablist{display:grid;grid-template-columns:minmax(0,1fr) 308px;gap:0;margin-top:46px}
+@media (max-width:860px){.tablist{grid-template-columns:minmax(0,1fr)}.preview{display:none}}
+.tabs{display:flex;gap:2px;overflow-x:auto}.tabs button{white-space:nowrap}
+.tabs button{background:transparent;color:#4f94bc;padding:8px 14px;font-size:14px;border-radius:3px 3px 0 0}
+.tabs button.on{background:#2a475e;color:#fff}
+.tabs button:hover{color:#fff}
+.rows{background:#2a475e;padding:4px 0}
+.row{display:flex;align-items:center;gap:12px;margin:5px 0 5px 4px;background:rgba(0,0,0,.2);height:69px;cursor:pointer;transition:background .15s}
+.row:hover,.row.on{background:#95bbd2;color:#10171e}
+.row.on{margin-right:-4px}
+.row .art{width:184px;height:69px;flex-shrink:0}
+.row .rb{flex:1;min-width:0}
+.row h4{font:400 15px "Noto Sans KR",sans-serif;color:#c7d5e0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row:hover h4,.row.on h4{color:#10171e}
+.row .rt{font-size:11px;color:#384959;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .rt{color:#8ba3b5}.row:hover .rt,.row.on .rt{color:#384959}
+.row .pr{margin-right:12px;flex-shrink:0}
+@media (max-width:560px){.row .art{width:110px}}
+.preview{background:#95bbd2;padding:14px 16px;color:#263645}
+.preview h3{font:400 21px/1.2 Manrope,"Noto Sans KR",sans-serif;color:#263645;margin-bottom:6px}
+.preview .rev{font-size:12px;margin-bottom:6px}
+.preview .rev b{color:#2a5e86}
+.preview .tags .tag{background:rgba(38,54,69,.2);color:#263645}
+.preview .pv{height:120px;margin:10px 0}
+.preview p{font-size:12px;line-height:1.55}
+.row.hide{display:none}
+.empty{padding:30px;text-align:center;color:#c7d5e0;display:none}
 
-/* contact */
-.contact{text-align:center;padding:120px 0 140px;background:linear-gradient(180deg,var(--night),#0a1f45 60%,#123a6b)}
-.contact h2{font-size:clamp(2rem,5vw,3.2rem)}
-.contact .cta{justify-content:center;margin-top:28px}
-footer{text-align:center;padding:28px 16px;color:var(--muted);font-size:.82rem;background:#123a6b;border-top:1px solid var(--line)}
+/* coming soon */
+.soon{display:grid;grid-template-columns:1.2fr 1fr;background:linear-gradient(110deg,#0f1922,#26193a);box-shadow:0 0 7px #000;overflow:hidden}
+@media (max-width:760px){.soon{grid-template-columns:1fr}}
+.soon .art{min-height:280px}
+.soon .art .gl{font-size:150px}
+.soon .sb{padding:26px}
+.badge{display:inline-block;font:700 11px "DM Mono",monospace;letter-spacing:.12em;color:#fff;background:linear-gradient(90deg,#c34c8a,#6b3fd1);padding:3px 10px;border-radius:2px;margin-bottom:12px}
+.soon h3{font:900 30px/1.2 "Noto Sans KR",sans-serif;color:#fff;margin-bottom:10px}
+.soon p{color:#b8c6d1;margin-bottom:14px}
+.soon dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:12px;margin-bottom:18px}
+.soon dt{color:var(--dim);text-transform:uppercase}
+.soon dd{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:0 16px;height:36px;border-radius:2px;font-size:14px;color:#d2efa9;background:linear-gradient(90deg,#6fa720 5%,#588a1b 95%);transition:filter .15s}
+.btn:hover{filter:brightness(1.15);color:#fff}
+.btn.blue{background:linear-gradient(90deg,#47bfff 5%,#1a44c2 60%);color:#fff}
+.btn.dark{background:rgba(103,193,245,.2);color:#67c1f5}
+.btn.dark:hover{background:linear-gradient(90deg,#06bfff,#2d73ff);color:#fff}
+.btn.wished{background:linear-gradient(90deg,#c34c8a,#6b3fd1);color:#fff}
 
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+/* profile */
+.profile{background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15));box-shadow:0 0 7px rgba(0,0,0,.5);padding:24px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:start}
+@media (max-width:760px){.profile{grid-template-columns:1fr}}
+.av{width:164px;height:164px;padding:3px;background:linear-gradient(135deg,#57cbde,#4171d6)}
+.av img{width:100%;height:100%;display:block}
+.pname{font:400 24px "Noto Sans KR",sans-serif;color:#fff}
+.pname small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.psum{margin:12px 0;color:#b8c6d1;max-width:520px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.bdg{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.25);padding:6px 10px 6px 6px;border-radius:3px;font-size:12px}
+.bdg i{font-style:normal;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 30% 30%,#4d7ea8,#1b2f45);font-size:16px}
+.lvl{text-align:center;min-width:170px}
+.lvl .ring{display:inline-grid;place-items:center;width:44px;height:44px;border:2px solid #c02942;border-radius:50%;font:800 18px Manrope;color:#fff;margin-left:8px}
+.lvl .lt{font-size:22px;color:#fff;display:flex;align-items:center;justify-content:center}
+.lvl .xp{height:6px;background:#0e1621;margin:12px 0 4px;border-radius:3px;overflow:hidden}
+.lvl .xp div{height:100%;width:79%;background:linear-gradient(90deg,#57cbde,#4171d6)}
+.lvl .xpt{font-size:11px;color:var(--muted)}
+.lvl .btn{margin-top:14px;width:100%;justify-content:center}
+.pstats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+@media (max-width:760px){.pstats{grid-template-columns:1fr 1fr}}
+.pstats div{background:rgba(0,0,0,.25);padding:12px;text-align:center}
+.pstats b{display:block;font:800 24px Manrope;color:var(--blue)}
+.pstats span{font-size:12px;color:var(--muted)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.75);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px}
+.modal.on{display:flex}
+.page{width:min(940px,100%);background:var(--bg);box-shadow:0 0 30px #000;animation:fade .25s}
+.page .ph{padding:18px 20px 10px;background:linear-gradient(180deg,#0f1922,var(--bg))}
+.crumb{font-size:12px;color:#8f98a0;margin-bottom:4px}
+.page h2{font:400 26px "Noto Sans KR",sans-serif;color:#fff}
+.pg{display:grid;grid-template-columns:1fr 324px;gap:16px;padding:0 20px 20px}
+@media (max-width:760px){.pg{grid-template-columns:1fr}}
+.pg .art{height:300px}
+.side .art{height:151px;margin-bottom:10px}
+.side p{font-size:13px;color:#c6d4df;margin-bottom:10px}
+.side dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12px;margin:10px 0}
+.side dt{color:var(--dim);text-transform:uppercase}
+.side dd{color:var(--blue)}
+.buy{margin:0 20px 20px;background:linear-gradient(-60deg,rgba(226,244,255,.3) 5%,rgba(84,107,115,.3) 95%);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.buy h3{font:400 20px "Noto Sans KR",sans-serif;color:#fff}
+.buy .acts{display:flex;align-items:center;gap:6px;background:#000;padding:2px 2px 2px 0;border-radius:2px}
+.buy .acts .pr{height:32px}
+.close{float:right;background:transparent;color:#fff;font-size:26px;line-height:1}
+
+/* footer */
+footer{margin-top:70px;background:#171a21;padding:30px 0 40px;font-size:12px;color:#8f98a0}
+footer .w{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+footer .brand b{font-size:18px}
+footer p{flex:1;min-width:260px}
+footer .fl{display:flex;gap:16px;margin-top:10px}
+footer .fl a{color:#c6d4df}
+footer .fl a:hover{color:#fff}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <div class="wrap">
-    <a href="#top" class="logo en"><img src="https://github.com/jes79.png" alt="">donghaewave</a>
-    <div class="links en">
-      <a href="#about">About</a><a href="#workflow">Workflow</a><a href="#projects">Projects</a><a href="#stack">Stack</a><a href="#contact">Contact</a>
+<div class="top">
+  <div class="w">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="#171a21" stroke="#66c0f4" stroke-width="6"/><path d="M16 56c10-12 21-12 31 0s21 12 37 0" fill="none" stroke="#66c0f4" stroke-width="8" stroke-linecap="round"/><path d="M24 70c8-7 16-7 24 0s16 7 28 0" fill="none" stroke="#66c0f4" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/><circle cx="66" cy="32" r="8" fill="#66c0f4"/></svg>
+      <span><b>ESTEAM</b><small>EAST SEA TEAM</small></span>
+    </a>
+    <nav class="mainnav">
+      <a class="on" href="#">상점</a><a href="#profile">개발자</a><a href="https://the6inch.tistory.com/" target="_blank" rel="noopener">커뮤니티</a><a href="https://github.com/jes79" target="_blank" rel="noopener">지원</a>
+    </nav>
+    <div class="acct">
+      <a class="install" href="#profile">⇩ ESTEAM 소개</a>
+      <a class="me" href="#profile"><img src="https://github.com/jes79.png" alt=""><span><b>jes79</b><i>₩ ∞ · 전부 무료</i></span></a>
     </div>
   </div>
-</nav>
+</div>
 
-<header class="hero" id="top">
-  <div class="stars"></div>
-  <div class="sun"></div>
-  <svg class="city" viewBox="0 0 440 120" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
-    <g fill="#14163a">
-      <rect x="10" y="70" width="24" height="50"/><rect x="38" y="52" width="18" height="68"/><rect x="60" y="80" width="30" height="40"/>
-      <rect x="96" y="40" width="22" height="80"/><rect x="122" y="62" width="26" height="58"/><rect x="152" y="20" width="16" height="100"/>
-      <polygon points="160,0 164,20 156,20"/><rect x="172" y="56" width="28" height="64"/><rect x="204" y="72" width="20" height="48"/>
-      <rect x="228" y="34" width="24" height="86"/><rect x="256" y="66" width="30" height="54"/><rect x="290" y="48" width="18" height="72"/>
-      <rect x="312" y="78" width="34" height="42"/><rect x="350" y="58" width="22" height="62"/><rect x="376" y="84" width="40" height="36"/>
-    </g>
-    <g fill="#ffcf6b" opacity=".7">
-      <rect x="100" y="50" width="3" height="3"/><rect x="108" y="64" width="3" height="3"/><rect x="156" y="40" width="3" height="3"/>
-      <rect x="232" y="46" width="3" height="3"/><rect x="242" y="70" width="3" height="3"/><rect x="294" y="60" width="3" height="3"/><rect x="356" y="70" width="3" height="3"/>
-    </g>
-  </svg>
-  <canvas id="sea" aria-hidden="true"></canvas>
+<main class="w">
+  <div class="storenav">
+    <a class="keep" href="#featured">추천</a><a href="#offers">특별 할인</a><a href="#cats">카테고리</a><a href="#list">신규 및 인기</a><a href="#soon">출시 예정</a>
+    <label class="search"><input id="q" placeholder="작업물 검색" aria-label="작업물 검색"><i>⌕</i></label>
+  </div>
 
-  <div class="wrap">
-    <div class="hero-inner">
-      <span class="tag"><span class="dot"></span>AI Vibe Coding Instructor</span>
-      <h1 class="en">Hi, I'm<br><span class="grad">Dylan Jeong</span></h1>
-      <p class="typed"><span id="typed"></span><span class="caret"></span></p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">🎮 프로젝트 보기</a>
-        <a class="btn ghost" href="https://github.com/jes79" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn ghost" href="https://the6inch.tistory.com/" target="_blank" rel="noopener">Blog ↗</a>
+  <div class="sh" id="featured"><h2>추천 및 특집</h2></div>
+  <div class="feat" id="feat"></div>
+  <div class="dots" id="dots"></div>
+
+  <div class="sh" id="offers"><h2>특별 할인</h2><a href="#list">더 보기</a></div>
+  <div class="offers" id="offerGrid"></div>
+
+  <div class="sh" id="cats"><h2>카테고리별 탐색</h2></div>
+  <div class="cats" id="catGrid"></div>
+
+  <div class="tablist" id="list">
+    <div>
+      <div class="tabs" id="tabs">
+        <button class="on" data-t="new">최근 업데이트</button>
+        <button data-t="top">인기 작업물</button>
+        <button data-t="learn">무료 강의 자료</button>
+      </div>
+      <div class="rows" id="rows"></div>
+      <div class="empty" id="empty">검색 결과가 없습니다. 🌊</div>
+    </div>
+    <aside class="preview" id="preview"></aside>
+  </div>
+
+  <div class="sh" id="soon"><h2>출시 예정</h2></div>
+  <section class="soon">
+    <div class="art" style="background:radial-gradient(circle at 70% 30%,#f5d7a1 0 7%,transparent 8%),radial-gradient(ellipse at 50% 120%,#7a2e5c,transparent 60%),linear-gradient(160deg,#1a1033,#3b1d4f 55%,#0d1a2b)"><span class="gl">符</span></div>
+    <div class="sb">
+      <span class="badge">COMING SOON · 개발 중</span>
+      <h3>심상공화전</h3>
+      <p>무거운 부적을 하나씩 내려놓을 때마다 몸이 가벼워진다. 싸우던 길을 뛰어넘고, 닫혀 있던 길이 열린다. 가벼운 몸은 새로 얻는 것이 아니라 <b>되찾는 것</b>.</p>
+      <dl>
+        <dt>엔진</dt><dd>Unity 6 · URP</dd>
+        <dt>플랫폼</dt><dd>Android · PC</dd>
+        <dt>제작</dt><dd>AI 바이브 코딩 · VARCO 3D · Blender</dd>
+      </dl>
+      <button class="btn" id="wish">♡ 찜 목록에 추가</button>
+    </div>
+  </section>
+
+  <div class="sh" id="profile"><h2>개발자 프로필</h2><a href="https://github.com/jes79" target="_blank" rel="noopener">GitHub에서 보기</a></div>
+  <section class="profile">
+    <div class="av"><img src="https://github.com/jes79.png" alt="Dylan Jeong 아바타"></div>
+    <div>
+      <div class="pname">Dylan Jeong <small>jes79 · 🇰🇷 동해 · East Sea Team</small></div>
+      <p class="psum">특정 엔진에 묶이지 않고, AI와 대화하며 게임을 만드는 <b>바이브 코딩</b>을 가르칩니다. 코드는 AI와 함께 쓰고, 3D 에셋은 AI로 생성하고, 사람은 기획 · 판단 · 완성도에 집중합니다.</p>
+      <div class="badges">
+        <span class="bdg"><i>🤖</i>AI Vibe Coder</span>
+        <span class="bdg"><i>🎮</i>Unity 6</span>
+        <span class="bdg"><i>⚙️</i>Unreal Engine</span>
+        <span class="bdg"><i>🧊</i>VARCO 3D</span>
+        <span class="bdg"><i>✨</i>Claude Code</span>
+        <span class="bdg"><i>🎓</i>Instructor</span>
       </div>
     </div>
-  </div>
-  <a class="scroll-hint en" href="#about">SCROLL ↓</a>
-</header>
-
-<main>
-<section id="about">
-  <div class="wrap about">
-    <div class="reveal">
-      <p class="eyebrow en">About</p>
-      <h2>엔진은 도구일 뿐,<br>아이디어는 <span style="color:var(--foam)">AI와 함께</span> 현실로.</h2>
-      <p class="lead">특정 엔진에 묶이지 않고, AI와 대화하며 게임을 만드는 <b>바이브 코딩</b>을 가르칩니다.
-        코드는 AI와 함께 쓰고, 3D 에셋은 AI로 생성하고, 사람은 <b>기획 · 판단 · 완성도</b>에 집중하는 흐름을 연구합니다.</p>
-      <div class="stats">
-        <div class="stat"><b class="en" data-count="19">0</b><span>공개 저장소</span></div>
-        <div class="stat"><b class="en" data-count="182">0</b><span>AI 용어 예제 씬</span></div>
-        <div class="stat"><b class="en">∞</b><span>배우고 기록하기</span></div>
-      </div>
+    <div class="lvl">
+      <div class="lt">레벨 <span class="ring">79</span></div>
+      <div class="xp"><div></div></div>
+      <div class="xpt">다음 레벨까지 XP: 배우고 기록하기</div>
+      <a class="btn blue" href="https://the6inch.tistory.com/" target="_blank" rel="noopener">블로그 방문</a>
     </div>
-    <div class="code reveal">
-      <div class="bar"><i></i><i></i><i></i></div>
-<pre class="mono"><span class="k">public class</span> <span class="t">Jes79</span> : <span class="t">IVibeCoder</span>
-{
-    <span class="t">string</span>   role    = <span class="s">"AI 바이브 코딩 강사"</span>;
-    <span class="t">string[]</span> engines = { <span class="s">"Unity"</span>, <span class="s">"Unreal"</span> };
-    <span class="t">string[]</span> aiTools = { <span class="s">"Claude Code"</span>, <span class="s">"VARCO 3D"</span> };
-    <span class="t">string</span>   home    = <span class="s">"동해 🌊"</span>;
-
-    <span class="c">// 매 프레임 반복되는 개발 루프</span>
-    <span class="t">void</span> <span class="f">Update</span>() =&gt; <span class="f">Imagine</span>()
-        .<span class="f">Prompt</span>().<span class="f">Generate</span>()
-        .<span class="f">Review</span>().<span class="f">Ship</span>();
-}</pre>
+    <div class="pstats">
+      <div><b id="sGames">0</b><span>공개 작업물</span></div>
+      <div><b>182</b><span>AI 용어 예제 씬</span></div>
+      <div><b>2</b><span>사용 엔진</span></div>
+      <div><b>₩0</b><span>총 결제 금액</span></div>
     </div>
-  </div>
-</section>
-
-<section id="workflow" style="background:linear-gradient(180deg,transparent,rgba(17,48,92,.25),transparent)">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow en">Vibe Coding Workflow</p>
-      <h2>프롬프트 한 줄에서 플레이 가능한 게임까지</h2>
-      <p class="lead">수업과 작업에서 반복하는 다섯 단계입니다.</p>
-    </div>
-    <div class="flow">
-      <div class="step reveal"><div class="ico">💡</div><h3 class="en">Idea</h3><p>만들고 싶은 게임과 장면을 정리</p></div>
-      <div class="step reveal"><div class="ico">💬</div><h3 class="en">Prompt</h3><p>기능과 연출을 말로 설계 · Claude Code</p></div>
-      <div class="step reveal"><div class="ico">🤖</div><h3 class="en">Generate</h3><p>코드 · 셰이더 · 3D 모델 생성 · VARCO 3D</p></div>
-      <div class="step reveal"><div class="ico">🎮</div><h3 class="en">Integrate</h3><p>Unity · Unreal에 조립해 플레이 가능하게</p></div>
-      <div class="step reveal"><div class="ico">🚀</div><h3 class="en">Review &amp; Ship</h3><p>읽고, 고치고, GitHub에 기록으로 남기기</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow en">Projects</p>
-      <h2>만들고, 기록한 것들</h2>
-    </div>
-    <div class="filters reveal" id="filters">
-      <button class="on" data-f="all">전체</button>
-      <button data-f="ai">🤖 AI</button>
-      <button data-f="art">🎨 Tech Art</button>
-      <button data-f="game">🎮 Game</button>
-      <button data-f="web">🌐 Web</button>
-      <button data-f="learn">📚 Learning</button>
-    </div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow en">Stack</p>
-      <h2>함께 일하는 도구들</h2>
-    </div>
-    <div class="stack">
-      <div class="group reveal"><h3>🤖 AI Tools</h3><ul><li>Claude Code</li><li>VARCO 3D</li><li>프롬프트 설계</li></ul></div>
-      <div class="group reveal"><h3>🎮 Game Engine</h3><ul><li>Unity 6</li><li>URP</li><li>Shader Graph</li><li>uGUI</li><li>DOTween</li><li>Unreal Engine</li></ul></div>
-      <div class="group reveal"><h3>🏔 3D / Tech Art</h3><ul><li>Blender</li><li>환경 아트</li><li>셰이더 &amp; UI FX</li><li>라이팅</li><li>포스트 프로세싱</li></ul></div>
-      <div class="group reveal"><h3>🌐 Workflow</h3><ul><li>C#</li><li>Git / GitHub</li><li>GitHub Pages</li><li>Notion</li><li>Tistory</li></ul></div>
-    </div>
-  </div>
-</section>
-
-<section id="teaching" style="padding-top:40px">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow en">Teaching</p>
-      <h2>수업에서 다루는 것</h2>
-    </div>
-    <div class="teach">
-      <div class="item reveal"><div class="num">01</div><h3>🤖 AI 바이브 코딩</h3><p>AI와 대화하며 기획부터 구현까지 진행하고, 생성된 코드를 읽고 고치는 힘을 기릅니다.</p></div>
-      <div class="item reveal"><div class="num">02</div><h3>🎮 엔진에 구애받지 않는 개발</h3><p>Unity든 Unreal이든, AI를 파트너 삼아 원하는 엔진으로 플레이 가능한 결과물을 만듭니다.</p></div>
-      <div class="item reveal"><div class="num">03</div><h3>📂 GitHub 포트폴리오</h3><p>학습 과정과 결과물이 함께 남도록, GitHub를 포트폴리오 Overview로 운영하는 법을 안내합니다.</p></div>
-    </div>
-  </div>
-</section>
+  </section>
 </main>
 
-<section class="contact" id="contact">
-  <div class="wrap reveal">
-    <p class="eyebrow en">Contact</p>
-    <h2>같이 만들어 볼까요? 🌊</h2>
-    <p class="lead" style="margin:auto">수업, 협업, 프로젝트 이야기는 언제든 환영합니다.</p>
-    <div class="cta">
-      <a class="btn primary" href="https://github.com/jes79" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn ghost" href="https://the6inch.tistory.com/" target="_blank" rel="noopener">Tistory Blog</a>
-      <a class="btn ghost" href="https://jes79.github.io/project-grimoire/#world" target="_blank" rel="noopener">Grimoire Portfolio</a>
-    </div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="page" id="page"></div></div>
+
+<footer>
+  <div class="w">
+    <span class="brand"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#8f98a0" stroke-width="6"/><path d="M16 56c10-12 21-12 31 0s21 12 37 0" fill="none" stroke="#8f98a0" stroke-width="8" stroke-linecap="round"/></svg><span><b style="color:#8f98a0">ESTEAM</b></span></span>
+    <p>© <span id="yr"></span> East Sea Team · Dylan Jeong. 모든 작업물은 무료입니다.<br>
+      ESTEAM은 개인 포트폴리오용 패러디 사이트이며 Valve Corporation 및 Steam과 관련이 없습니다.
+      <span class="fl"><a href="https://github.com/jes79" target="_blank" rel="noopener">GitHub</a><a href="https://the6inch.tistory.com/" target="_blank" rel="noopener">Tistory</a><a href="https://jes79.github.io/project-grimoire/#world" target="_blank" rel="noopener">Grimoire</a></span>
+    </p>
   </div>
-</section>
-<footer class="en">© <span id="yr"></span> Dylan Jeong · donghaewave 🌊</footer>
+</footer>
 
 <script>
-// projects
+const G={
+  sea:"linear-gradient(160deg,#0b3a6b,#1b6fa8 50%,#ffb36b)",
+  neon:"linear-gradient(135deg,#1a0b3d,#6a1b9a 50%,#00e5ff)",
+  moon:"radial-gradient(circle at 70% 30%,#fff3c4 0 9%,transparent 10%),linear-gradient(160deg,#0d1b3a,#2c3e7a)",
+  mint:"linear-gradient(135deg,#0f3b3a,#1f8a70 55%,#c3f584)",
+  fire:"linear-gradient(135deg,#3a0b0b,#b33a1d 55%,#ffcf6b)",
+  ink:"linear-gradient(160deg,#1c1c28,#3e3b5c 60%,#a58cff)",
+  rose:"linear-gradient(135deg,#3b0d2e,#c2185b 55%,#ffb3c7)",
+  steel:"linear-gradient(160deg,#16222e,#34546e 55%,#9ec9e8)",
+  sun:"linear-gradient(160deg,#3d2a00,#c27c0e 55%,#ffe08a)",
+  grass:"linear-gradient(160deg,#10260f,#3b7a2a 55%,#d8f08a)"
+};
 const P=[
- {e:"🤖",t:"AI-assisted Environment Pipeline",d:"AI를 개발 보조 도구로 활용한 Unity 자동 배경 생성 & 테크니컬 아트 파이프라인.",c:["Pipeline","Tech Art","AI"],f:["ai","art"],r:"unity-ai-assisted-environment-pipeline"},
- {e:"🧠",t:"Unity AI Glossary Playground",d:"유니티 AI 요청 용어집 182개 용어를 각각 동작하는 예제 씬으로 구현한 학습 프로젝트.",c:["Unity 6","URP","AI"],f:["ai","learn"],r:"Unity-AI-Glossary-Playground"},
- {e:"✨",t:"UI Effects Playground",d:"아이콘 아웃라인 펄스, 스켈레톤 로딩 쉬머 등 게임 UI 셰이더 & 연출 효과 모음.",c:["Shader","UI FX","Unity 6"],f:["art"],r:"UI-Effects-Playground"},
- {e:"🌆",t:"Cyberpunk BG Template",d:"Unity 6.3 URP 기반 사이버펑크 배경 제작 템플릿.",c:["Environment","URP"],f:["art"],r:"unity-cyberpunk-bg-template"},
- {e:"📖",t:"Grimoire : Once Upon a Crime",d:"게임 환경과 월드 구성을 정리한 포트폴리오 웹 프로젝트.",c:["Portfolio","GitHub Pages"],f:["web"],r:"project-grimoire",live:"https://jes79.github.io/project-grimoire/#world"},
- {e:"⚔️",t:"LikeVamSur3D",d:"[Unity 6] 함께 만들어가는 3D 서바이벌 게임 개발.",c:["Unity 6","C#","Game"],f:["game"],r:"LikeVamSur3D"},
- {e:"🏔",t:"Unity Environment Workflow",d:"Unity 환경 제작 실습과 GitHub 기록 관리를 함께 정리하는 워크플로우.",c:["Environment","Workflow"],f:["art","learn"],r:"UnityEnvironmentWorkflow"},
- {e:"🎨",t:"ShaderStartUp",d:"셰이더 입문 실습 프로젝트.",c:["ShaderLab"],f:["art","learn"],r:"ShaderStartUp_fin"},
- {e:"🏃",t:"ColorManRun",d:"셰이더 기반 러너 게임 실습.",c:["ShaderLab","Game"],f:["game","art"],r:"ColorManRun"},
- {e:"🗡",t:"Unity2DAdventureGame",d:"2D 플랫포머 어드벤처 게임 예제.",c:["2D","Platformer"],f:["game","learn"],r:"Unity2DAdventureGame"},
- {e:"🎲",t:"SimpleTuneGame",d:"간단한 턴제 게임 예제.",c:["C#","Turn-based"],f:["game","learn"],r:"SimpleTuneGame"},
- {e:"🐱",t:"nyangBakery",d:"냥 베이커리 게임 프로젝트.",c:["Game"],f:["game"],r:"nyangBakery"},
- {e:"💻",t:"BeginnersCsharp",d:"처음 배우는 C# 프로그래밍.",c:["C#"],f:["learn"],r:"BeginnersCsharp"},
- {e:"🧩",t:"Unity Base",d:"유니티 핵심 기능 기초 학습.",c:["Unity","C#"],f:["learn"],r:"01_Unity_Base_fin"},
- {e:"🗂",t:"quickdesk",d:"웹 기반 미니 프로젝트.",c:["HTML"],f:["web"],r:"quickdesk"}
+ {id:"uifx",t:"UI Effects Playground",gl:"✦",g:"neon",tags:["셰이더","UI FX","Unity 6"],c:["art"],r:"UI-Effects-Playground",d:"아이콘 아웃라인 펄스, 스켈레톤 로딩 쉬머 등 게임 UI 셰이더와 연출 효과 모음. 데모 씬 빌더로 바로 확인할 수 있습니다.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
+ {id:"gloss",t:"Unity AI Glossary Playground",gl:"辭",g:"ink",tags:["AI","URP","학습"],c:["ai","learn"],r:"Unity-AI-Glossary-Playground",d:"유니티 AI 요청 용어집 182개 용어를 각각 동작하는 예제 씬으로 구현한 Unity 6 URP 학습 프로젝트.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
+ {id:"pipe",t:"AI-assisted Environment Pipeline",gl:"AI",g:"mint",tags:["AI","파이프라인","테크 아트"],c:["ai","art"],r:"unity-ai-assisted-environment-pipeline",d:"AI를 개발 보조 도구로 활용하여 제작한 Unity 자동 배경 생성 및 테크니컬 아트 파이프라인.",u:"2026-07-20",rev:"매우 긍정적",feat:1},
+ {id:"cyber",t:"Cyberpunk BG Template",gl:"2099",g:"rose",tags:["환경","URP","템플릿"],c:["art"],r:"unity-cyberpunk-bg-template",d:"Unity 6.3 URP 사이버펑크 배경 제작 템플릿.",u:"2026-10-06",rev:"매우 긍정적",feat:1},
+ {id:"grim",t:"Grimoire : Once Upon a Crime",gl:"書",g:"moon",tags:["포트폴리오","웹","월드"],c:["web"],r:"project-grimoire",live:"https://jes79.github.io/project-grimoire/#world",d:"게임 환경과 월드 구성을 정리한 포트폴리오 웹 프로젝트.",u:"2026-08-11",rev:"매우 긍정적",feat:1},
+ {id:"vam",t:"LikeVamSur3D",gl:"⚔",g:"fire",tags:["액션","서바이벌","Unity 6"],c:["game"],r:"LikeVamSur3D",d:"[Unity 6] 함께 만들어가는 3D 서바이벌 게임 개발 프로젝트.",u:"2026-08-30",rev:"긍정적"},
+ {id:"shader",t:"ShaderStartUp",gl:"光",g:"sun",tags:["셰이더","입문"],c:["art","learn"],r:"ShaderStartUp_fin",d:"셰이더 입문 실습 프로젝트.",u:"2026-10-07",rev:"긍정적"},
+ {id:"turn",t:"SimpleTuneGame",gl:"⚄",g:"steel",tags:["턴제","C#","예제"],c:["game","learn"],r:"SimpleTuneGame",d:"간단한 턴제 게임 예제.",u:"2026-10-05",rev:"긍정적"},
+ {id:"base",t:"Unity Base",gl:"基",g:"steel",tags:["Unity","기초","강의"],c:["learn"],r:"01_Unity_Base_fin",d:"유니티 핵심 기능 기초 학습.",u:"2026-09-26",rev:"매우 긍정적"},
+ {id:"nyang",t:"nyangBakery",gl:"🐱",g:"sun",tags:["캐주얼","게임"],c:["game"],r:"nyangBakery",d:"고양이 베이커리 게임 프로젝트.",u:"2026-09-25",rev:"긍정적"},
+ {id:"color",t:"ColorManRun",gl:"色",g:"neon",tags:["러너","셰이더"],c:["game","art"],r:"ColorManRun",d:"컬러 셰이더를 활용한 러너 게임 실습.",u:"2026-09-23",rev:"긍정적"},
+ {id:"cs",t:"CSharpPracticeGame",gl:"C#",g:"ink",tags:["C#","첫 출시 목표"],c:["game","learn"],r:"CSharpPracticeGame",d:"게임 출시를 목표로 한 첫 번째 프로젝트.",u:"2026-09-09",rev:"긍정적"},
+ {id:"adv",t:"Unity2DAdventureGame",gl:"冒",g:"grass",tags:["2D","플랫포머"],c:["game","learn"],r:"Unity2DAdventureGame",d:"2D 플랫포머 어드벤처 게임 예제.",u:"2026-08-30",rev:"긍정적"},
+ {id:"begin",t:"BeginnersCsharp",gl:"{ }",g:"steel",tags:["C#","입문","강의"],c:["learn"],r:"BeginnersCsharp",d:"처음 배우는 C# 프로그래밍.",u:"2026-08-28",rev:"매우 긍정적"},
+ {id:"quick",t:"quickdesk",gl:"⌘",g:"sea",tags:["웹","HTML"],c:["web"],r:"quickdesk",d:"웹 기반 미니 프로젝트.",u:"2026-08-23",rev:"긍정적"},
+ {id:"envwf",t:"Unity Environment Workflow",gl:"山",g:"grass",tags:["환경","워크플로우"],c:["art","learn"],r:"UnityEnvironmentWorkflow",d:"Unity 환경 제작 실습과 GitHub 기록 관리를 함께 정리하는 워크플로우.",u:"2026-06-17",rev:"긍정적"}
 ];
-const grid=document.getElementById('grid');
-grid.innerHTML=P.map(p=>`<a class="card reveal" data-f="${p.f.join(' ')}" href="${p.live||'https://github.com/jes79/'+p.r}" target="_blank" rel="noopener">
-  <div class="emoji">${p.e}</div><h3>${p.t}</h3><p>${p.d}</p>
-  <div class="chips">${p.c.map(c=>`<span class="chip">${c}</span>`).join('')}</div>
-  <span class="go en">${p.live?'Live demo ↗':'View on GitHub ↗'}</span></a>`).join('');
-document.getElementById('filters').addEventListener('click',e=>{
-  const b=e.target.closest('button'); if(!b) return;
-  document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));
-  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hide',b.dataset.f!=='all'&&!c.dataset.f.split(' ').includes(b.dataset.f)));
-});
-grid.addEventListener('pointermove',e=>{const c=e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')});
+const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const art=(p,cls="")=>`<div class="art ${cls}" style="background:${G[p.g]}"><span class="gl">${esc(p.gl)}</span><span class="ttl">${esc(p.t)}</span></div>`;
+const price=(disc)=>disc?`<div class="pr"><span class="disc">-100%</span><span class="vals"><s>₩∞</s><b>무료</b></span></div>`:`<div class="pr"><span class="free">무료</span></div>`;
+const url=p=>p.live||`https://github.com/jes79/${p.r}`;
+const fmt=d=>{const [y,m,dd]=d.split("-");return `${y}년 ${+m}월 ${+dd}일`};
 
-// typing
-const lines=["AI와 함께 게임을 만드는 바이브 코딩 강사","Unity · Unreal, 엔진을 가리지 않는 개발","프롬프트로 코드부터 3D 에셋까지","학습 과정이 곧 포트폴리오가 되도록"];
-const el=document.getElementById('typed');let li=0,ci=0,del=false;
-(function type(){const s=lines[li];el.textContent=s.slice(0,ci);
-  if(!del&&ci<s.length){ci++;setTimeout(type,70)}else if(!del){del=true;setTimeout(type,1800)}
-  else if(ci>0){ci--;setTimeout(type,30)}else{del=false;li=(li+1)%lines.length;setTimeout(type,300)}})();
+// featured carousel
+const F=P.filter(p=>p.feat);let fi=0,timer;
+$("#feat").innerHTML=F.map((p,i)=>`<div class="cap${i?"":" on"}" data-id="${p.id}">${art(p)}
+  <div class="info"><h3>${esc(p.t)}</h3>
+  <div class="shots">${["0deg","90deg","180deg","270deg"].map(h=>`<div style="background:${G[p.g]};filter:hue-rotate(${h})"></div>`).join("")}</div>
+  <div class="avail">지금 이용 가능</div>
+  <div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+  <div class="price"><span class="os">🎮 Unity · GitHub</span>${price(1)}</div></div></div>`).join("")+
+  `<button class="arrow l" aria-label="이전">‹</button><button class="arrow r" aria-label="다음">›</button>`;
+$("#dots").innerHTML=F.map((_,i)=>`<button class="${i?"":"on"}" aria-label="${i+1}번"></button>`).join("");
+function go(n){fi=(n+F.length)%F.length;document.querySelectorAll(".cap").forEach((c,i)=>c.classList.toggle("on",i===fi));document.querySelectorAll("#dots button").forEach((d,i)=>d.classList.toggle("on",i===fi));clearInterval(timer);timer=setInterval(()=>go(fi+1),6000)}
+$(".arrow.l").onclick=()=>go(fi-1);$(".arrow.r").onclick=()=>go(fi+1);
+document.querySelectorAll("#dots button").forEach((d,i)=>d.onclick=()=>go(i));go(0);
 
-// reveal + counters
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;en.target.classList.add('in');
-  en.target.querySelectorAll('[data-count]').forEach(n=>{const end=+n.dataset.count,t0=performance.now();
-    (function tick(t){const k=Math.min((t-t0)/1400,1);n.textContent=Math.round(end*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(tick)})(t0)});
-  io.unobserve(en.target)}),{threshold:.15});
-document.querySelectorAll('.reveal').forEach((r,i)=>{r.style.transitionDelay=(i%5)*70+'ms';io.observe(r)});
+// offers
+const O=["gloss","pipe","cyber","vam"].map(id=>P.find(p=>p.id===id));
+$("#offerGrid").innerHTML=O.map(p=>`<div class="offer" data-id="${p.id}">${art(p)}<div class="ob"><div class="lbl">평생 할인</div><div class="sub">오늘도, 내일도 무료</div>${price(1)}</div></div>`).join("");
 
-// nav
-const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
-document.getElementById('yr').textContent=new Date().getFullYear();
+// categories
+const C=[["ai","🤖","AI 바이브 코딩","linear-gradient(135deg,#0f3b3a,#1f8a70)"],["art","🎨","테크 아트","linear-gradient(135deg,#3b0d2e,#c2185b)"],["game","🎮","게임","linear-gradient(135deg,#3a0b0b,#b33a1d)"],["learn","📚","강의 자료","linear-gradient(135deg,#16222e,#34546e)"],["web","🌐","웹","linear-gradient(135deg,#0b3a6b,#1b6fa8)"]];
+$("#catGrid").innerHTML=C.map(([k,e,n,g])=>`<div class="catt" data-c="${k}" style="background:${g}"><span class="e">${e}</span>${n}</div>`).join("");
 
-// sea
-const cv=document.getElementById('sea'),cx=cv.getContext('2d');let W,H,dpr;
-function size(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
-size();addEventListener('resize',size);
-const layers=[{a:6,l:.012,s:.6,c:'#1d4f8f',y:.08},{a:8,l:.009,s:-.45,c:'#163f78',y:.3},{a:10,l:.007,s:.35,c:'#0f2f5e',y:.55},{a:12,l:.005,s:-.25,c:'#0a1f45',y:.8}];
-const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function draw(t){cx.clearRect(0,0,W,H);
-  const g=cx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#2a5ea3');g.addColorStop(1,'#0a1730');cx.fillStyle=g;cx.fillRect(0,0,W,H);
-  // sun reflection
-  const sx=W*.54;for(let i=0;i<14;i++){const y=4+i*H/16,w=(60-i*3)*(1+Math.sin(t/600+i)*.15);cx.fillStyle=`rgba(255,${190-i*4},110,${.55-i*.035})`;cx.fillRect(sx-w/2+Math.sin(t/900+i*2)*6,y,w,2)}
-  layers.forEach(L=>{cx.beginPath();cx.moveTo(0,H);for(let x=0;x<=W;x+=8){cx.lineTo(x,H*L.y+Math.sin(x*L.l+t/1000*L.s*3)*L.a+Math.sin(x*L.l*2.3-t/1000*L.s*2)*L.a*.4)}
-    cx.lineTo(W,H);cx.closePath();cx.fillStyle=L.c;cx.globalAlpha=.85;cx.fill();cx.globalAlpha=1;
-    cx.strokeStyle='rgba(127,227,255,.18)';cx.lineWidth=1.2;cx.stroke()});
-  if(!still)requestAnimationFrame(draw)}
-requestAnimationFrame(draw);
+// list
+let tab="new",cat=null;
+function render(){
+  const q=$("#q").value.trim().toLowerCase();
+  let L=[...P];
+  if(tab==="new")L.sort((a,b)=>b.u.localeCompare(a.u));
+  if(tab==="top")L=L.filter(p=>p.rev.includes("압도적")||p.rev.includes("매우"));
+  if(tab==="learn")L=L.filter(p=>p.c.includes("learn"));
+  if(cat)L=L.filter(p=>p.c.includes(cat));
+  if(q)L=L.filter(p=>(p.t+p.tags.join(" ")+p.d).toLowerCase().includes(q));
+  $("#rows").innerHTML=L.map(p=>`<div class="row" data-id="${p.id}">${art(p,"sm")}<div class="rb"><h4>${esc(p.t)}</h4><div class="rt">${p.tags.map(esc).join(", ")} · ${fmt(p.u)}</div></div>${price(0)}</div>`).join("");
+  $("#empty").style.display=L.length?"none":"block";
+  if(L[0])show(L[0].id);else $("#preview").innerHTML="";
+}
+function show(id){const p=P.find(x=>x.id===id);
+  document.querySelectorAll(".row").forEach(r=>r.classList.toggle("on",r.dataset.id===id));
+  $("#preview").innerHTML=`<h3>${esc(p.t)}</h3><div class="rev">사용자 평가: <b>${p.rev}</b></div><div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>${art(p,"pv")}<p>${esc(p.d)}</p>`;}
+$("#rows").addEventListener("mouseover",e=>{const r=e.target.closest(".row");if(r)show(r.dataset.id)});
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;tab=b.dataset.t;cat=null;document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));render()});
+$("#q").addEventListener("input",()=>{render();});
+$("#q").addEventListener("keydown",e=>{if(e.key==="Enter")$("#list").scrollIntoView()});
+$("#catGrid").addEventListener("click",e=>{const t=e.target.closest(".catt");if(!t)return;cat=t.dataset.c;tab="all";document.querySelectorAll("#tabs button").forEach(x=>x.classList.remove("on"));render();$("#list").scrollIntoView()});
+render();
+
+// modal store page
+function openPage(id){const p=P.find(x=>x.id===id);
+  $("#page").innerHTML=`<div class="ph"><button class="close" aria-label="닫기">×</button><div class="crumb">모든 작업물 › ${esc(p.tags[0])} › ${esc(p.t)}</div><h2>${esc(p.t)}</h2></div>
+  <div class="pg">${art(p)}<div class="side">${art(p)}<p>${esc(p.d)}</p>
+    <dl><dt>사용자 평가</dt><dd>${p.rev}</dd><dt>최근 업데이트</dt><dd>${fmt(p.u)}</dd><dt>개발자</dt><dd>East Sea Team (jes79)</dd><dt>배급사</dt><dd>GitHub</dd></dl>
+    <div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div></div>
+  <div class="buy"><h3>${esc(p.t)} 받기</h3><div class="acts">${price(1)}<a class="btn" href="${url(p)}" target="_blank" rel="noopener">${p.live?"지금 플레이":"라이브러리에 추가"}</a></div></div>`;
+  $("#modal").classList.add("on");document.body.style.overflow="hidden";}
+function shut(){$("#modal").classList.remove("on");document.body.style.overflow=""}
+document.addEventListener("click",e=>{
+  const t=e.target.closest(".cap .art,.cap .info,.offer,.row");if(t){openPage((t.closest("[data-id]")).dataset.id);return}
+  if(e.target.id==="modal"||e.target.closest(".close"))shut();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")shut()});
+
+// wishlist
+const wish=$("#wish");let wished=false;try{wished=localStorage.getItem("esteam-wish")==="1"}catch(e){}
+const paint=()=>{wish.classList.toggle("wished",wished);wish.textContent=wished?"♥ 찜 목록에 있음":"♡ 찜 목록에 추가"};paint();
+wish.onclick=()=>{wished=!wished;try{localStorage.setItem("esteam-wish",wished?"1":"0")}catch(e){}paint()};
+
+// counters
+$("#sGames").textContent=P.length;
+$("#yr").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
