@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23171a21' stroke='%2366c0f4' stroke-width='8'/><path d='M18 58c10-12 20-12 30 0s20 12 34 0' fill='none' stroke='%2366c0f4' stroke-width='9' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Manrope:wght@500;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@900&family=Manrope:wght@500;700;800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
   --top:#171a21; --bg:#1b2838; --bg2:#16202d; --panel:#0e1621; --blue:#66c0f4; --blue2:#1a9fff;
@@ -65,12 +65,27 @@ button{font:inherit;cursor:pointer;border:0}
 .sh a:hover{background:rgba(255,255,255,.1)}
 
 /* art */
-.art{position:relative;overflow:hidden;display:grid;place-items:center;color:#fff;isolation:isolate}
-.art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.55));z-index:-1}
-.art .gl{font:900 clamp(40px,8vw,110px)/1 "Noto Sans KR",serif;opacity:.92;text-shadow:0 6px 30px rgba(0,0,0,.45)}
-.art .ttl{position:absolute;left:14px;right:14px;bottom:10px;font:800 15px/1.25 Manrope,"Noto Sans KR",sans-serif;text-shadow:0 2px 8px #000}
-.art.sm .gl{font-size:34px}
-.art.sm .ttl{display:none}
+.art{position:relative;overflow:hidden;color:#fff;isolation:isolate;container-type:size;background:#0b1017}
+.art.img{background-size:cover;background-position:center}
+.art.img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.6));z-index:1}
+.art.img .ttl{position:absolute;left:14px;right:14px;bottom:10px;z-index:2;font:800 15px/1.25 Manrope,"Noto Sans KR",sans-serif;text-shadow:0 2px 8px #000}
+.art.type{background:
+  radial-gradient(110% 90% at 88% 0%,color-mix(in srgb,var(--a) 70%,transparent),transparent 62%),
+  radial-gradient(90% 80% at 0% 100%,color-mix(in srgb,var(--b) 55%,transparent),transparent 60%),
+  linear-gradient(160deg,#0d131c,#06090e)}
+.art.type::before{content:"";position:absolute;inset:0;z-index:0;opacity:.5;mix-blend-mode:overlay;-webkit-mask:linear-gradient(120deg,transparent 15%,#000 70%);mask:linear-gradient(120deg,transparent 15%,#000 70%)}
+.art.type[data-p=grid]::before{background:linear-gradient(#fff3 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,#fff3 1px,transparent 1px) 0 0/22px 22px}
+.art.type[data-p=lines]::before{background:repeating-linear-gradient(-45deg,#fff4 0 1px,transparent 1px 9px)}
+.art.type[data-p=dots]::before{background:radial-gradient(#fff6 1.2px,transparent 1.6px) 0 0/14px 14px}
+.art.type[data-p=rings]::before{background:repeating-radial-gradient(circle at 85% 15%,#fff4 0 1px,transparent 1px 16px)}
+.art.type[data-p=scan]::before{background:repeating-linear-gradient(0deg,#fff3 0 1px,transparent 1px 5px)}
+.art.type::after{content:"";position:absolute;right:-12cqw;top:-30cqh;width:60cqw;height:60cqw;border-radius:50%;border:1px solid color-mix(in srgb,var(--a) 60%,#fff 10%);opacity:.35;z-index:0}
+.art .k{position:absolute;left:7cqw;top:9cqh;z-index:2;font:500 max(9px,2.6cqw)/1 "DM Mono",monospace;letter-spacing:.22em;color:color-mix(in srgb,var(--a) 55%,#fff);text-transform:uppercase}
+.art .n{position:absolute;left:7cqw;right:7cqw;bottom:11cqh;z-index:2;font:800 clamp(13px,8.4cqw,64px)/1 Manrope,"Noto Sans KR",sans-serif;letter-spacing:-.025em;text-wrap:balance;text-shadow:0 4px 24px rgba(0,0,0,.5)}
+.art .n::after{content:"";display:block;width:12cqw;height:3px;margin-top:3.4cqh;background:linear-gradient(90deg,var(--a),var(--b))}
+.art .m{position:absolute;right:7cqw;top:9cqh;z-index:2;font:800 max(8px,2.2cqw)/1 Manrope,sans-serif;letter-spacing:.3em;color:#ffffff59}
+.art.sm .k,.art.sm .m,.art.sm .n::after,.art.sm .ttl,.cap .art.img .ttl,.pv.img .ttl{display:none}
+.art.sm .n{font-size:11.5cqw;bottom:auto;top:50%;transform:translateY(-50%);left:8cqw;right:8cqw}
 
 /* featured */
 .feat{position:relative}
@@ -78,11 +93,11 @@ button{font:inherit;cursor:pointer;border:0}
 .cap.on{display:grid;animation:fade .5s}
 @keyframes fade{from{opacity:0}}
 .cap .art{height:100%;cursor:pointer}
-.cap .art .gl{font-size:120px}
 .cap .info{padding:14px 14px 12px;display:flex;flex-direction:column;background:linear-gradient(180deg,#0f1922,#0b141c);cursor:pointer}
 .cap .info h3{font:400 24px/1.25 Manrope,"Noto Sans KR",sans-serif;color:#fff;margin-bottom:10px}
 .shots{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
-.shots div{height:70px;border-radius:1px;opacity:.75;transition:opacity .2s}
+.desc{font-size:13px;color:#acb2b8;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.shots div{height:70px;border-radius:1px;opacity:.8;transition:opacity .2s;background-size:cover;background-position:center}
 .shots div:hover{opacity:1}
 .avail{font-size:20px;color:#fff;margin-bottom:4px}
 .tags{display:flex;flex-wrap:wrap;gap:4px}
@@ -117,9 +132,7 @@ button{font:inherit;cursor:pointer;border:0}
 /* categories */
 .cats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 @media (max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}}
-.catt{position:relative;height:120px;border-radius:3px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding:12px;cursor:pointer;font:800 15px Manrope,"Noto Sans KR",sans-serif;color:#fff;text-shadow:0 2px 6px #000;transition:transform .15s}
-.catt:hover{transform:scale(1.03)}
-.catt span.e{position:absolute;top:14px;left:50%;transform:translateX(-50%);font-size:36px}
+.catt{height:120px;border-radius:3px;cursor:pointer;transition:transform .15s,filter .15s}.catt:hover{transform:translateY(-3px);filter:brightness(1.15)}.catt .n{font-size:clamp(15px,10cqw,22px)}
 
 /* tabs list */
 .tablist{display:grid;grid-template-columns:minmax(0,1fr) 308px;gap:0;margin-top:46px}
@@ -154,7 +167,6 @@ button{font:inherit;cursor:pointer;border:0}
 .soon{display:grid;grid-template-columns:1.2fr 1fr;background:linear-gradient(110deg,#0f1922,#26193a);box-shadow:0 0 7px #000;overflow:hidden}
 @media (max-width:760px){.soon{grid-template-columns:1fr}}
 .soon .art{min-height:280px}
-.soon .art .gl{font-size:150px}
 .soon .sb{padding:26px}
 .badge{display:inline-block;font:700 11px "DM Mono",monospace;letter-spacing:.12em;color:#fff;background:linear-gradient(90deg,#c34c8a,#6b3fd1);padding:3px 10px;border-radius:2px;margin-bottom:12px}
 .soon h3{font:900 30px/1.2 "Noto Sans KR",sans-serif;color:#fff;margin-bottom:10px}
@@ -275,7 +287,7 @@ footer .fl a:hover{color:#fff}
 
   <div class="sh" id="soon"><h2>출시 예정</h2></div>
   <section class="soon">
-    <div class="art" style="background:radial-gradient(circle at 70% 30%,#f5d7a1 0 7%,transparent 8%),radial-gradient(ellipse at 50% 120%,#7a2e5c,transparent 60%),linear-gradient(160deg,#1a1033,#3b1d4f 55%,#0d1a2b)"><span class="gl">符</span></div>
+    <div class="art type" data-p="rings" style="--a:#f5b971;--b:#9d4edd;background:radial-gradient(circle at 78% 26%,#ffe7b8 0 5%,#f5b97155 5.5%,transparent 16%),radial-gradient(90% 70% at 0% 100%,#9d4edd66,transparent 60%),linear-gradient(170deg,#140c26,#2a1640 55%,#0b1220)"><span class="k">Coming Soon</span><span class="m">ESTEAM</span><span class="n" style="font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(28px,11cqw,84px);letter-spacing:.04em">심상공화전</span></div>
     <div class="sb">
       <span class="badge">COMING SOON · 개발 중</span>
       <h3>심상공화전</h3>
@@ -332,38 +344,28 @@ footer .fl a:hover{color:#fff}
 </footer>
 
 <script>
-const G={
-  sea:"linear-gradient(160deg,#0b3a6b,#1b6fa8 50%,#ffb36b)",
-  neon:"linear-gradient(135deg,#1a0b3d,#6a1b9a 50%,#00e5ff)",
-  moon:"radial-gradient(circle at 70% 30%,#fff3c4 0 9%,transparent 10%),linear-gradient(160deg,#0d1b3a,#2c3e7a)",
-  mint:"linear-gradient(135deg,#0f3b3a,#1f8a70 55%,#c3f584)",
-  fire:"linear-gradient(135deg,#3a0b0b,#b33a1d 55%,#ffcf6b)",
-  ink:"linear-gradient(160deg,#1c1c28,#3e3b5c 60%,#a58cff)",
-  rose:"linear-gradient(135deg,#3b0d2e,#c2185b 55%,#ffb3c7)",
-  steel:"linear-gradient(160deg,#16222e,#34546e 55%,#9ec9e8)",
-  sun:"linear-gradient(160deg,#3d2a00,#c27c0e 55%,#ffe08a)",
-  grass:"linear-gradient(160deg,#10260f,#3b7a2a 55%,#d8f08a)"
-};
 const P=[
- {id:"uifx",t:"UI Effects Playground",gl:"✦",g:"neon",tags:["셰이더","UI FX","Unity 6"],c:["art"],r:"UI-Effects-Playground",d:"아이콘 아웃라인 펄스, 스켈레톤 로딩 쉬머 등 게임 UI 셰이더와 연출 효과 모음. 데모 씬 빌더로 바로 확인할 수 있습니다.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
- {id:"gloss",t:"Unity AI Glossary Playground",gl:"辭",g:"ink",tags:["AI","URP","학습"],c:["ai","learn"],r:"Unity-AI-Glossary-Playground",d:"유니티 AI 요청 용어집 182개 용어를 각각 동작하는 예제 씬으로 구현한 Unity 6 URP 학습 프로젝트.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
- {id:"pipe",t:"AI-assisted Environment Pipeline",gl:"AI",g:"mint",tags:["AI","파이프라인","테크 아트"],c:["ai","art"],r:"unity-ai-assisted-environment-pipeline",d:"AI를 개발 보조 도구로 활용하여 제작한 Unity 자동 배경 생성 및 테크니컬 아트 파이프라인.",u:"2026-07-20",rev:"매우 긍정적",feat:1},
- {id:"cyber",t:"Cyberpunk BG Template",gl:"2099",g:"rose",tags:["환경","URP","템플릿"],c:["art"],r:"unity-cyberpunk-bg-template",d:"Unity 6.3 URP 사이버펑크 배경 제작 템플릿.",u:"2026-10-06",rev:"매우 긍정적",feat:1},
- {id:"grim",t:"Grimoire : Once Upon a Crime",gl:"書",g:"moon",tags:["포트폴리오","웹","월드"],c:["web"],r:"project-grimoire",live:"https://jes79.github.io/project-grimoire/#world",d:"게임 환경과 월드 구성을 정리한 포트폴리오 웹 프로젝트.",u:"2026-08-11",rev:"매우 긍정적",feat:1},
- {id:"vam",t:"LikeVamSur3D",gl:"⚔",g:"fire",tags:["액션","서바이벌","Unity 6"],c:["game"],r:"LikeVamSur3D",d:"[Unity 6] 함께 만들어가는 3D 서바이벌 게임 개발 프로젝트.",u:"2026-08-30",rev:"긍정적"},
- {id:"shader",t:"ShaderStartUp",gl:"光",g:"sun",tags:["셰이더","입문"],c:["art","learn"],r:"ShaderStartUp_fin",d:"셰이더 입문 실습 프로젝트.",u:"2026-10-07",rev:"긍정적"},
- {id:"turn",t:"SimpleTuneGame",gl:"⚄",g:"steel",tags:["턴제","C#","예제"],c:["game","learn"],r:"SimpleTuneGame",d:"간단한 턴제 게임 예제.",u:"2026-10-05",rev:"긍정적"},
- {id:"base",t:"Unity Base",gl:"基",g:"steel",tags:["Unity","기초","강의"],c:["learn"],r:"01_Unity_Base_fin",d:"유니티 핵심 기능 기초 학습.",u:"2026-09-26",rev:"매우 긍정적"},
- {id:"nyang",t:"nyangBakery",gl:"🐱",g:"sun",tags:["캐주얼","게임"],c:["game"],r:"nyangBakery",d:"고양이 베이커리 게임 프로젝트.",u:"2026-09-25",rev:"긍정적"},
- {id:"color",t:"ColorManRun",gl:"色",g:"neon",tags:["러너","셰이더"],c:["game","art"],r:"ColorManRun",d:"컬러 셰이더를 활용한 러너 게임 실습.",u:"2026-09-23",rev:"긍정적"},
- {id:"cs",t:"CSharpPracticeGame",gl:"C#",g:"ink",tags:["C#","첫 출시 목표"],c:["game","learn"],r:"CSharpPracticeGame",d:"게임 출시를 목표로 한 첫 번째 프로젝트.",u:"2026-09-09",rev:"긍정적"},
- {id:"adv",t:"Unity2DAdventureGame",gl:"冒",g:"grass",tags:["2D","플랫포머"],c:["game","learn"],r:"Unity2DAdventureGame",d:"2D 플랫포머 어드벤처 게임 예제.",u:"2026-08-30",rev:"긍정적"},
- {id:"begin",t:"BeginnersCsharp",gl:"{ }",g:"steel",tags:["C#","입문","강의"],c:["learn"],r:"BeginnersCsharp",d:"처음 배우는 C# 프로그래밍.",u:"2026-08-28",rev:"매우 긍정적"},
- {id:"quick",t:"quickdesk",gl:"⌘",g:"sea",tags:["웹","HTML"],c:["web"],r:"quickdesk",d:"웹 기반 미니 프로젝트.",u:"2026-08-23",rev:"긍정적"},
- {id:"envwf",t:"Unity Environment Workflow",gl:"山",g:"grass",tags:["환경","워크플로우"],c:["art","learn"],r:"UnityEnvironmentWorkflow",d:"Unity 환경 제작 실습과 GitHub 기록 관리를 함께 정리하는 워크플로우.",u:"2026-06-17",rev:"긍정적"}
+ {id:"uifx",t:"UI Effects Playground",k:"UI · Shader FX",a:"#8b5cf6",b:"#22d3ee",pt:"scan",tags:["셰이더","UI FX","Unity 6"],c:["art"],r:"UI-Effects-Playground",d:"아이콘 아웃라인 펄스, 스켈레톤 로딩 쉬머 등 게임 UI 셰이더와 연출 효과 모음. 데모 씬 빌더로 바로 확인할 수 있습니다.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
+ {id:"gloss",t:"Unity AI Glossary Playground",k:"182 Scenes",a:"#38bdf8",b:"#6366f1",pt:"grid",img:"img/0415_Hologram.jpg",shots:["img/0522_VFXGraph.jpg","img/1013_GPUInstancing.jpg","img/0516_AuraBuff.jpg","img/0706_FieldOfView.jpg"],tags:["AI","URP","학습"],c:["ai","learn"],r:"Unity-AI-Glossary-Playground",d:"유니티 AI 요청 용어집 182개 용어를 각각 동작하는 예제 씬으로 구현한 Unity 6 URP 학습 프로젝트.",u:"2026-10-10",rev:"압도적으로 긍정적",feat:1},
+ {id:"grim",t:"Grimoire : Once Upon a Crime",k:"Art Book",a:"#e11d48",b:"#7c3aed",pt:"rings",img:"img/grimoire-cover.jpg",shots:["img/grimoire-hero.jpg","img/grimoire-rouge.jpg","img/grimoire-dorothy.jpg","img/grimoire-cover.jpg"],tags:["포트폴리오","3D 캐릭터","월드"],c:["web","art"],r:"project-grimoire",live:"https://jes79.github.io/project-grimoire/#world",d:"게임 환경과 월드, 3D 캐릭터 제작 과정을 아트북 형식으로 정리한 포트폴리오 웹 프로젝트.",u:"2026-08-11",rev:"압도적으로 긍정적",feat:1},
+ {id:"pipe",t:"AI-assisted Environment Pipeline",k:"AI · Tech Art",a:"#10b981",b:"#0ea5e9",pt:"dots",tags:["AI","파이프라인","테크 아트"],c:["ai","art"],r:"unity-ai-assisted-environment-pipeline",d:"AI를 개발 보조 도구로 활용하여 제작한 Unity 자동 배경 생성 및 테크니컬 아트 파이프라인.",u:"2026-07-20",rev:"매우 긍정적",feat:1},
+ {id:"cyber",t:"Cyberpunk BG Template",k:"Unity 6.3 · URP",a:"#f43f5e",b:"#06b6d4",pt:"lines",tags:["환경","URP","템플릿"],c:["art"],r:"unity-cyberpunk-bg-template",d:"Unity 6.3 URP 사이버펑크 배경 제작 템플릿.",u:"2026-10-06",rev:"매우 긍정적",feat:1},
+ {id:"vam",t:"LikeVamSur3D",k:"Survival Action",a:"#f97316",b:"#dc2626",pt:"lines",tags:["액션","서바이벌","Unity 6"],c:["game"],r:"LikeVamSur3D",d:"[Unity 6] 함께 만들어가는 3D 서바이벌 게임 개발 프로젝트.",u:"2026-08-30",rev:"긍정적"},
+ {id:"shader",t:"Shader StartUp",k:"Shader 101",a:"#facc15",b:"#f97316",pt:"rings",tags:["셰이더","입문"],c:["art","learn"],r:"ShaderStartUp_fin",d:"셰이더 입문 실습 프로젝트.",u:"2026-10-07",rev:"긍정적"},
+ {id:"turn",t:"Simple Turn Game",k:"Turn-based",a:"#60a5fa",b:"#a78bfa",pt:"grid",tags:["턴제","C#","예제"],c:["game","learn"],r:"SimpleTuneGame",d:"간단한 턴제 게임 예제.",u:"2026-10-05",rev:"긍정적"},
+ {id:"base",t:"Unity Base",k:"Unity 기초",a:"#94a3b8",b:"#38bdf8",pt:"grid",tags:["Unity","기초","강의"],c:["learn"],r:"01_Unity_Base_fin",d:"유니티 핵심 기능 기초 학습.",u:"2026-09-26",rev:"매우 긍정적"},
+ {id:"nyang",t:"nyang Bakery",k:"Casual",a:"#fbbf24",b:"#fb7185",pt:"dots",tags:["캐주얼","게임"],c:["game"],r:"nyangBakery",d:"고양이 베이커리 게임 프로젝트.",u:"2026-09-25",rev:"긍정적"},
+ {id:"color",t:"ColorMan Run",k:"Runner",a:"#22d3ee",b:"#e879f9",pt:"scan",tags:["러너","셰이더"],c:["game","art"],r:"ColorManRun",d:"컬러 셰이더를 활용한 러너 게임 실습.",u:"2026-09-23",rev:"긍정적"},
+ {id:"cs",t:"C# Practice Game",k:"First Release",a:"#a78bfa",b:"#6366f1",pt:"dots",tags:["C#","첫 출시 목표"],c:["game","learn"],r:"CSharpPracticeGame",d:"게임 출시를 목표로 한 첫 번째 프로젝트.",u:"2026-09-09",rev:"긍정적"},
+ {id:"adv",t:"2D Adventure",k:"Platformer",a:"#84cc16",b:"#14b8a6",pt:"lines",tags:["2D","플랫포머"],c:["game","learn"],r:"Unity2DAdventureGame",d:"2D 플랫포머 어드벤처 게임 예제.",u:"2026-08-30",rev:"긍정적"},
+ {id:"begin",t:"Beginners C#",k:"C# 입문",a:"#818cf8",b:"#22d3ee",pt:"grid",tags:["C#","입문","강의"],c:["learn"],r:"BeginnersCsharp",d:"처음 배우는 C# 프로그래밍.",u:"2026-08-28",rev:"매우 긍정적"},
+ {id:"quick",t:"quickdesk",k:"Web",a:"#38bdf8",b:"#94a3b8",pt:"dots",tags:["웹","HTML"],c:["web"],r:"quickdesk",d:"웹 기반 미니 프로젝트.",u:"2026-08-23",rev:"긍정적"},
+ {id:"envwf",t:"Environment Workflow",k:"Environment",a:"#34d399",b:"#a3e635",pt:"rings",tags:["환경","워크플로우"],c:["art","learn"],r:"UnityEnvironmentWorkflow",d:"Unity 환경 제작 실습과 GitHub 기록 관리를 함께 정리하는 워크플로우.",u:"2026-06-17",rev:"긍정적"}
 ];
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const art=(p,cls="")=>`<div class="art ${cls}" style="background:${G[p.g]}"><span class="gl">${esc(p.gl)}</span><span class="ttl">${esc(p.t)}</span></div>`;
+const art=(p,cls="")=>p.img
+  ?`<div class="art img ${cls}" style="background-image:url('${p.img}')"><span class="ttl">${esc(p.t)}</span></div>`
+  :`<div class="art type ${cls}" data-p="${p.pt}" style="--a:${p.a};--b:${p.b}"><span class="k">${esc(p.k)}</span><span class="m">ESTEAM</span><span class="n">${esc(p.t)}</span></div>`;
 const price=(disc)=>disc?`<div class="pr"><span class="disc">-100%</span><span class="vals"><s>₩∞</s><b>무료</b></span></div>`:`<div class="pr"><span class="free">무료</span></div>`;
 const url=p=>p.live||`https://github.com/jes79/${p.r}`;
 const fmt=d=>{const [y,m,dd]=d.split("-");return `${y}년 ${+m}월 ${+dd}일`};
@@ -372,10 +374,10 @@ const fmt=d=>{const [y,m,dd]=d.split("-");return `${y}년 ${+m}월 ${+dd}일`};
 const F=P.filter(p=>p.feat);let fi=0,timer;
 $("#feat").innerHTML=F.map((p,i)=>`<div class="cap${i?"":" on"}" data-id="${p.id}">${art(p)}
   <div class="info"><h3>${esc(p.t)}</h3>
-  <div class="shots">${["0deg","90deg","180deg","270deg"].map(h=>`<div style="background:${G[p.g]};filter:hue-rotate(${h})"></div>`).join("")}</div>
+  ${p.shots?`<div class="shots">${p.shots.map(s=>`<div style="background-image:url('${s}')"></div>`).join("")}</div>`:`<p class="desc">${esc(p.d)}</p>`}
   <div class="avail">지금 이용 가능</div>
   <div class="tags">${p.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
-  <div class="price"><span class="os">🎮 Unity · GitHub</span>${price(1)}</div></div></div>`).join("")+
+  <div class="price"><span class="os">${p.live?"🌐 Web · GitHub Pages":"🎮 Unity · GitHub"}</span>${price(1)}</div></div></div>`).join("")+
   `<button class="arrow l" aria-label="이전">‹</button><button class="arrow r" aria-label="다음">›</button>`;
 $("#dots").innerHTML=F.map((_,i)=>`<button class="${i?"":"on"}" aria-label="${i+1}번"></button>`).join("");
 function go(n){fi=(n+F.length)%F.length;document.querySelectorAll(".cap").forEach((c,i)=>c.classList.toggle("on",i===fi));document.querySelectorAll("#dots button").forEach((d,i)=>d.classList.toggle("on",i===fi));clearInterval(timer);timer=setInterval(()=>go(fi+1),6000)}
@@ -387,8 +389,8 @@ const O=["gloss","pipe","cyber","vam"].map(id=>P.find(p=>p.id===id));
 $("#offerGrid").innerHTML=O.map(p=>`<div class="offer" data-id="${p.id}">${art(p)}<div class="ob"><div class="lbl">평생 할인</div><div class="sub">오늘도, 내일도 무료</div>${price(1)}</div></div>`).join("");
 
 // categories
-const C=[["ai","🤖","AI 바이브 코딩","linear-gradient(135deg,#0f3b3a,#1f8a70)"],["art","🎨","테크 아트","linear-gradient(135deg,#3b0d2e,#c2185b)"],["game","🎮","게임","linear-gradient(135deg,#3a0b0b,#b33a1d)"],["learn","📚","강의 자료","linear-gradient(135deg,#16222e,#34546e)"],["web","🌐","웹","linear-gradient(135deg,#0b3a6b,#1b6fa8)"]];
-$("#catGrid").innerHTML=C.map(([k,e,n,g])=>`<div class="catt" data-c="${k}" style="background:${g}"><span class="e">${e}</span>${n}</div>`).join("");
+const C=[["ai","AI Vibe Coding","AI 바이브 코딩","#10b981","#0ea5e9","dots"],["art","Tech Art","테크 아트","#e11d48","#8b5cf6","lines"],["game","Games","게임","#f97316","#dc2626","grid"],["learn","Courseware","강의 자료","#60a5fa","#94a3b8","rings"],["web","Web","웹","#38bdf8","#6366f1","scan"]];
+$("#catGrid").innerHTML=C.map(([k,en,n,a,b,pt])=>`<div class="catt art type" data-c="${k}" data-p="${pt}" style="--a:${a};--b:${b}"><span class="k">${en}</span><span class="n">${n}</span></div>`).join("");
 
 // list
 let tab="new",cat=null;
